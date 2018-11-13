@@ -1,6 +1,5 @@
 [CmdletBinding()]
 Param(
-    [String[]]
     $VSTSToken,
     $VSTSUrl,
     $VSTSPool,
@@ -84,8 +83,8 @@ $creds = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes
 $encodedAuthValue = "Basic " + $creds
 $acceptHeaderValue = "application/json;api-version=3.0-preview"
 $headers = @{Authorization = $encodedAuthValue;Accept = $acceptHeaderValue }
-$vstsUrl = $VSTSUrl + "_apis/distributedtask/packages/agent?platform=win-x64&`$top=1"
-$response = Invoke-WebRequest -UseBasicParsing -Headers $headers -Uri $vstsUrl -UserAgent $useragent
+$vstsAgentUrl = $VSTSUrl + "_apis/distributedtask/packages/agent?platform=win-x64&`$top=1"
+$response = Invoke-WebRequest -UseBasicParsing -Headers $headers -Uri $vstsAgentUrl -UserAgent $useragent
 $response = ConvertFrom-Json $response.Content
 
 $WebClient.DownloadFile($response.value[0].downloadUrl, $agentZip);
