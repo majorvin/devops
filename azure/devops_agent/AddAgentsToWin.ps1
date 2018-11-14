@@ -1,10 +1,10 @@
 [CmdletBinding()]
 Param(
-    $VSTSToken,
-    $VSTSUrl,
-    $VSTSPool,
-    $windowsLogonAccount,
-    $windowsLogonPassword
+    [string]$VSTSToken,
+    [string]$VSTSUrl,
+    [string]$VSTSPool,
+    [string]$windowsLogonAccount,
+    [string]$windowsLogonPassword
 )
 
 $ErrorActionPreference="Stop";
